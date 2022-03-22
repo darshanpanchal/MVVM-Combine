@@ -26,6 +26,8 @@ class SliderTableViewCell: UITableViewCell {
         self.stacKView.layer.cornerRadius = 0.7
         // Initialization code
         self.objSlider.addTarget(self, action: #selector(SliderTableViewCell.slidervalueChange), for: .valueChanged)
+        self.txtSliderValue.delegate = self
+        self.txtSliderValue.keyboardType = .numberPad
     }
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -45,9 +47,28 @@ class SliderTableViewCell: UITableViewCell {
     }
     func updateSliderValue(sliderValue:SliderValue){
         DispatchQueue.main.async {
-            self.objSlider.value = Float("\(sliderValue.value)") ?? 0.0
-            self.txtSliderValue.text = "\(sliderValue.value)"
+            let updatedValue = Float("\(sliderValue.value)") ?? 0.0
+            
+            self.objSlider.value = updatedValue > self.objSlider.maximumValue ? 100 : updatedValue
+            self.txtSliderValue.text = updatedValue > self.objSlider.maximumValue ? "100" : "\(Int(updatedValue))"
         }
     }
     
+}
+extension SliderTableViewCell:UITextFieldDelegate{
+   
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let typpedString = ((textField.text)! as NSString).replacingCharacters(in: range, with: string)
+        print("=== \(typpedString) \(typpedString.count)")
+        
+       
+        guard typpedString.count > 0 else{
+            self.objSlider.value = 0
+            self.txtSliderValue.text = "0"
+            return  true
+        }
+       
+        self.updateSliderValue(sliderValue: SliderValue.init(value: typpedString, index: self.tag))
+        return true
+    }
 }

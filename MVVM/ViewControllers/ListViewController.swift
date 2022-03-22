@@ -24,7 +24,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         for index in 0..<25{
-            self.arrayOfSliderValue.append(SliderValue.init(value: "0.0", index: index))
+            self.arrayOfSliderValue.append(SliderValue.init(value: "0", index: index))
         }
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.prefersLargeTitles = true
