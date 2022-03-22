@@ -18,9 +18,14 @@ class ListViewController: UIViewController {
     var arrayOfWatchList:[WatchList] = []
     var observers:[AnyCancellable] = []
    
+    
+    var arrayOfSliderValue:[SliderValue] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        for index in 0..<25{
+            self.arrayOfSliderValue.append(SliderValue.init(value: "0.0", index: index))
+        }
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -35,6 +40,7 @@ class ListViewController: UIViewController {
     }
     // MARK: - Setup
     private func setup(){
+        self.tableView.register(UINib.init(nibName: "SliderTableViewCell", bundle: nil), forCellReuseIdentifier: "SliderTableViewCell")
         self.tableView.register(UINib.init(nibName: "WatchListTableViewCell", bundle: nil), forCellReuseIdentifier: "WatchListTableViewCell")
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.delegate = self
@@ -76,21 +82,29 @@ class ListViewController: UIViewController {
 
 }
 // MARK: - TableView DataSource/Delefate Methods
-extension ListViewController:UITableViewDelegate, UITableViewDataSource{
+extension ListViewController:UITableViewDelegate, UITableViewDataSource,SliderProtocol{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  self.arrayOfWatchList.count
+        return  self.arrayOfSliderValue.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "WatchListTableViewCell", for: indexPath) as! WatchListTableViewCell
-        cell.action.sink {[weak self] value in
-            self?.buttonDeleteSelector(index: value)
-        }.store(in: &observers)
-        cell.watchlistModel = self.arrayOfWatchList[indexPath.row]
+        //let cell = self.tableView.dequeueReusableCell(withIdentifier: "WatchListTableViewCell", for: indexPath) as! WatchListTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SliderTableViewCell", for: indexPath) as! SliderTableViewCell
+        cell.selectionStyle = .none
         cell.tag = indexPath.row
+        cell.delegate = self
+        cell.updateSliderValue(sliderValue: self.arrayOfSliderValue[indexPath.row])
         return  cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
+        return 100
+    }
+    func sliderUpdatewithValue(sliderValue: SliderValue) {
+        DispatchQueue.main.async {
+            self.arrayOfSliderValue[sliderValue.index] = sliderValue
+            self.tableView.reloadRows(at: [IndexPath.init(row: sliderValue.index, section: 0)], with: .none)
+           
+        }
     }
     
 }

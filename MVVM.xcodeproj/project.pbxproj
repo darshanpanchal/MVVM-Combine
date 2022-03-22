@@ -21,6 +21,8 @@
 		1884C77627D76DC400A9C77F /* WatchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1884C77427D76DC300A9C77F /* WatchListTableViewCell.xib */; };
 		1884C77727D76DC400A9C77F /* WatchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884C77527D76DC300A9C77F /* WatchListTableViewCell.swift */; };
 		1884C77B27D774D200A9C77F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884C77A27D774D200A9C77F /* ListViewController.swift */; };
+		18B8358227EA06F500925318 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8358027EA06F500925318 /* SliderTableViewCell.swift */; };
+		18B8358327EA06F500925318 /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B8358127EA06F500925318 /* SliderTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		1884C77427D76DC300A9C77F /* WatchListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchListTableViewCell.xib; sourceTree = "<group>"; };
 		1884C77527D76DC300A9C77F /* WatchListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchListTableViewCell.swift; sourceTree = "<group>"; };
 		1884C77A27D774D200A9C77F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		18B8358027EA06F500925318 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		18B8358127EA06F500925318 /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 			children = (
 				1884C77527D76DC300A9C77F /* WatchListTableViewCell.swift */,
 				1884C77427D76DC300A9C77F /* WatchListTableViewCell.xib */,
+				18B8358027EA06F500925318 /* SliderTableViewCell.swift */,
+				18B8358127EA06F500925318 /* SliderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 			files = (
 				1850EFDF27022F5500558026 /* LaunchScreen.storyboard in Resources */,
 				1884C77627D76DC400A9C77F /* WatchListTableViewCell.xib in Resources */,
+				18B8358327EA06F500925318 /* SliderTableViewCell.xib in Resources */,
 				1884C76927D767B200A9C77F /* watchlist1_data.json in Resources */,
 				1850EFDC27022F5500558026 /* Assets.xcassets in Resources */,
 				1850EFDA27022F5100558026 /* Main.storyboard in Resources */,
@@ -322,6 +329,7 @@
 			files = (
 				1884C77727D76DC400A9C77F /* WatchListTableViewCell.swift in Sources */,
 				1884C77327D76C4300A9C77F /* Model.swift in Sources */,
+				18B8358227EA06F500925318 /* SliderTableViewCell.swift in Sources */,
 				1850EFD727022F5100558026 /* ViewController.swift in Sources */,
 				1850EFD327022F5100558026 /* AppDelegate.swift in Sources */,
 				1850EFD527022F5100558026 /* SceneDelegate.swift in Sources */,

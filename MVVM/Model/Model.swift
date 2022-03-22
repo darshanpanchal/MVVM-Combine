@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+struct SliderValue{
+    let value:String
+    let index:Int
+}
 struct WatchList: Codable {
     let dayHigh, dayLow: Double
     let eps: Int
